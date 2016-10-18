@@ -28,4 +28,4 @@ cursor.execute(addName, empName)
 
 key.commit()
 cursor.close()
-key.close
+key.close #
