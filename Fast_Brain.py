@@ -2,11 +2,12 @@ import mysql.connector
 from mysql.connector import errorcode
 
 try:
-    cnn = mysql.connector.connect(
+    key = mysql.connector.connect(
         user='root',
         password='1991', #my connection password
         host='localhost',
         database='Prime-Time-Project' #this is the db name
+    )
     print ("Connected to Database!")
 
 except mysql.connector.Error as e:
@@ -16,8 +17,15 @@ except mysql.connector.Error as e:
         print("Database doesn't exist")
     else:
         print(e)
-cursor = cnn.cursor()
-addNum =(I)
+cursor = key.cursor()
+addName =("INSERT INTO Name (fName, lName) VALUES (%s, %s)")
+fName="Vehans"
+lName="Ayvazi"
 
+empName=(fName, lName)
 
-    )
+cursor.execute(addName, empName)
+
+key.commit()
+cursor.close()
+key.close
