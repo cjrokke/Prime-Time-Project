@@ -4,7 +4,7 @@ from mysql.connector import errorcode
 try:
     cnn = mysql.connector.connect(
         user='root',
-        password='1991',
+        password='1991', #my connection password
         host='localhost',
         database='Prime-Time-Project' #this is the db name
     print ("Connected to Database!")
