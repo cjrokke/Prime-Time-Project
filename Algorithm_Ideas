@@ -1,5 +1,6 @@
 1) Input Number
 2) Square root of Input, call that number SQ
-3) Modulus the Input by prime numbers(PN) up until SQ, Input % PN = result
-4) If result == whole number, Input is not prime
-5) If result never == whole number, Input is prime
+3) If SQ == whole number, Input not prime, else continue
+4) Modulus the Input by prime numbers(PN) up until SQ, Input % PN = result
+5) If result == whole number, Input is not prime, e
+6) If result never == whole number, Input is prime
