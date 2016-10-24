@@ -1,6 +1,15 @@
-1) Input Number
-2) Square root of Input, call that number SQ
-3) If SQ == whole number, Input not prime, else continue
-4) Modulus the Input by prime numbers(PN) up until SQ, Input % PN = result
-5) If result == whole number, Input is not prime, e
-6) If result never == whole number, Input is prime
+Slow Brain
+  1) Input Number
+  3) If Input even, Input is not prime
+  2) Square root of Input, call that number SQ
+  3) If SQ == whole number, Input not prime, else continue
+  4) Modulus the Input by prime numbers(PN) up until SQ, Input % PN = result
+  5) If result == whole number, Input is not prime, e
+  6) If result never == whole number, Input is prime
+
+Fast Brain
+  1) Input Number
+  2) If Input even, Input is not prime
+  3) Else check last number (LN) in database
+  4) is input less than or equal to LN, check if its store, if it is store number is prime, if not  stored in database number isn't prime
+  5) Else throw into slow brain
