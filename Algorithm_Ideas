@@ -13,3 +13,11 @@ Fast Brain
   3) Else check last number (LN) in database
   4) is input less than or equal to LN, check if its store, if it is store number is prime, if not  stored in database number isn't prime
   5) Else throw into slow brain
+
+Speed of Searching Database
+  1) mySQL is searched through using queries (EX. "SELECT * from tutorials_tbl" )
+  2) can't really write queries anymore effecient than that
+  3) possible speed on is to have several table each with part of the overall total...
+    Ex. if the total is 100 then 10 tables with 10 entries each...
+    Code could than select which table to query through and therefore have less entries to check
+    
