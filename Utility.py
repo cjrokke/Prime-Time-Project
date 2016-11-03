@@ -11,61 +11,65 @@ import mysql.connector
 from mysql.connector import errorcode
 
 
-def DB_Connect():
-    #this function will connect us to the db and return the key for later use
-    try:
-        key = mysql.connector.connect(
-            user='root',  # MySQL user name
-            password='1991',  # my connection password
-            host='localhost',
-            database='TEST_DB')
-        print ("  Success: Connected to Database")  # success
-    except mysql.connector.Error as e:  # fail ... what's the issue?
-        if e.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-            print("  Something is wrong with the username or password")
-        elif e.errno == errorcode.ER_BAD_DB_ERROR:
-            print("  Database doesn't exist")
-        else:
-            print(e)
-    return key;
+class Database(object):
+    def __init__(self):
+        self.user='root'
+        self.password='1991'
+        self.host='localhost'
+        self.database='TEST_DB'
 
-def DB_Input (num):
-    # First we must connect to the db and give error messages when we hit issues
-    key = DB_Connect()
+    def Connect(self):
+        #this function will connect us to the db
+        try:
+            key = mysql.connector.connect(self.user, self.password , self.host, self.database)
+            print ("  Success: Connected to Database")  # success
+        except mysql.connector.Error as e:  # fail ... what's the issue?
+            if e.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+                print("  Something is wrong with the username or password")
+            elif e.errno == errorcode.ER_BAD_DB_ERROR:
+                print("  Database doesn't exist")
+            else:
+                print(e)
+        return key;
 
-    mycursor = key.cursor()
+    def DB_Input (self, num):
+        # First we must connect to the db and give error messages when we hit issues
+        key = self.Connect()
 
-    print ("  Processing: Inserting number into Database...")
-    addNum = ("INSERT INTO test_table (a) VALUES (%(x)s)") #sql command to insert x
-    X = {'x' : num} # used a dic. incase we want to input multi. values
-    mycursor.execute(addNum, X)
-    print ("  Success: Number inserted into Database")
+        mycursor = key.cursor()
 
-    key.commit()
-    mycursor.close()
-    key.close
-    return;
+        print ("  Processing: Inserting number into Database...")
+        addNum = ("INSERT INTO test_table (a) VALUES (%(x)s)") #sql command to insert x
+        X = {'x' : num} # used a dic. incase we want to input multi. values
+        mycursor.execute(addNum, X)
+        print ("  Success: Number inserted into Database")
 
-def DB_PrintAll ():
-    #to print all
-    key = DB_Connect()
-    mycursor = key.cursor()
+        key.commit()
+        mycursor.close()
+        key.close
+        return;
 
-    print ("  Processing: Printing...")
+    def DB_PrintAll (self):
+        #to print all
+        key = self.Connect()
+        mycursor = key.cursor()
 
-    mycursor.execute("USE TEST_DB")  # select the database
-    mycursor.execute("SELECT a from test_table")  # execute 'SHOW TABLES' (but data is not returned)
+        print ("  Processing: Printing...")
 
-    #tables = mycursor.fetchall()  # return data from last query
+        mycursor.execute("USE TEST_DB")  # select the database
+        mycursor.execute("SELECT a from test_table")  # execute 'SHOW TABLES' (but data is not returned)
 
-    for (test_table) in mycursor:
-        print(test_table)
+        #tables = mycursor.fetchall()  # return data from last query
 
-    print ("  Success: Printed")
+        for (test_table) in mycursor:
+            print(test_table)
 
-    key.commit()
-    mycursor.close()
-    key.close
-    return;
+        print ("  Success: Printed")
 
-#will add more
+        key.commit()
+        mycursor.close()
+        key.close
+        return;
+
+    #will add more
+
