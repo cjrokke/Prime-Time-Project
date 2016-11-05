@@ -16,9 +16,8 @@ print("TEST_START - Processing: Testing DB Connection/Input/Print...")
 x = 0 # test input
 mytestDB = Database(user, password, host, database) # using test key
 mytestDB.connect() # Database Connection
-#mytestDB.input(x) # inputing a value
-#mytestDB.printAll() # printing all values
-mytestDB.remove(x) # printing all values
+mytestDB.input(x) # inputing a value
+mytestDB.remove(x) # removing all values = x
 mytestDB.printAll() # printing all values
 print("TEST_END - Success: Connection/Input/Print test passed")
 print("---------------------------------------------")
