@@ -16,7 +16,7 @@ class Database(object):
     def connect(self):
         #this function will connect us to the db
         try:
-            key = mysql.connector.connect(user = self.user, password = self.password , host = self.host, database = self.database)#
+            key = mysql.connector.connect(user = self.user, password = self.password , host = self.host, database = self.database)##
             print ("  Success: Connected to Database")  # success
         except mysql.connector.Error as e:  # fail ... what's the issue?
             if e.errno == errorcode.ER_ACCESS_DENIED_ERROR:
