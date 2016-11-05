@@ -13,10 +13,12 @@ database = 'TEST_DB'
 
 # Connection/Input/Print Test
 print("TEST_START - Processing: Testing DB Connection/Input/Print...")
-x = 12 # test input
+x = 0 # test input
 mytestDB = Database(user, password, host, database) # using test key
 mytestDB.connect() # Database Connection
-mytestDB.input(x) # inputing a value
+#mytestDB.input(x) # inputing a value
+#mytestDB.printAll() # printing all values
+mytestDB.remove(x) # printing all values
 mytestDB.printAll() # printing all values
 print("TEST_END - Success: Connection/Input/Print test passed")
 print("---------------------------------------------")
