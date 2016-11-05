@@ -13,12 +13,12 @@ from mysql.connector import errorcode
 
 class Database(object):
     def __init__(self):
-        self.user='root'
-        self.password='1991'
-        self.host='localhost'
-        self.database='TEST_DB'
+        self.user = 'root'
+        self.password = '1991'
+        self.host = 'localhost'
+        self.database = 'TEST_DB'
 
-    def Connect(self):
+    def connect(self):
         #this function will connect us to the db
         try:
             key = mysql.connector.connect(self.user, self.password , self.host, self.database)
@@ -34,7 +34,7 @@ class Database(object):
 
     def DB_Input (self, num):
         # First we must connect to the db and give error messages when we hit issues
-        key = self.Connect()
+        key = self.connect()
 
         mycursor = key.cursor()
 
@@ -51,7 +51,7 @@ class Database(object):
 
     def DB_PrintAll (self):
         #to print all
-        key = self.Connect()
+        key = self.connect()
         mycursor = key.cursor()
 
         print ("  Processing: Printing...")
