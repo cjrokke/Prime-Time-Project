@@ -16,7 +16,7 @@ class Database(object):
     def connect(self):
         #this function will connect us to the db
         try:
-            key = mysql.connector.connect(user = self.user, password = self.password , host = self.host, database = self.database)##
+            key = mysql.connector.connect(user = self.user, password = self.password , host = self.host, database = self.database)
             print ("  Success: Connected to Database")  # success
         except mysql.connector.Error as e:  # fail ... what's the issue?
             if e.errno == errorcode.ER_ACCESS_DENIED_ERROR:
@@ -25,10 +25,9 @@ class Database(object):
                 print("  Database doesn't exist")
             else:
                 print(e)
-        return key;
+        return key
 
     def input (self, num):
-        # First we must connect to the db and give error messages when we hit issues
         key = self.connect()
 
         mycursor = key.cursor()
@@ -42,7 +41,24 @@ class Database(object):
         key.commit()
         mycursor.close()
         key.close
-        return;
+        return
+
+    def remove (self, num):
+        key = self.connect()
+        mycursor = key.cursor()
+
+        print ("  Processing: Deleting number from Database...")
+
+        delNum = ("DELETE FROM test_table WHERE a = (%(x)s);") #sql command to insert x
+        X = {'x' : num} # used a dic. incase we want to input multi. values
+        mycursor.execute(delNum, X)
+
+        print ("  Success: Number deleted from Database")
+
+        key.commit()
+        mycursor.close()
+        key.close
+        return
 
     def printAll (self):
         #to print all
@@ -64,7 +80,7 @@ class Database(object):
         key.commit()
         mycursor.close()
         key.close
-        return;
+        return
 
-    #will add more
+
 
