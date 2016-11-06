@@ -2,9 +2,10 @@
 #Database => TEST_DB
 #Table => test_table
 #Column=> a
-
+from __future__ import print_function
 import mysql.connector
 from mysql.connector import errorcode
+
 
 class Database(object):
     def __init__(self, user, password, host, database):
@@ -40,7 +41,7 @@ class Database(object):
 
         key.commit()
         mycursor.close()
-        key.close
+        key.close()
         return
 
     def remove (self, num):
@@ -57,8 +58,29 @@ class Database(object):
 
         key.commit()
         mycursor.close()
-        key.close
-        return
+        key.close()
+
+    def search (self, num):
+        key = self.connect()
+        mycursor = key.cursor()
+
+        print ("  Processing: searching for number (", num , ") in Database...")
+
+        seaNum = ("SELECT a FROM test_table WHERE a = (%(x)s);") #sql command to insert x
+        X = {'x' : num}
+        mycursor.execute(seaNum, X)
+
+        found = mycursor.fetchone()
+
+        if found == None:
+            print ("Not found")
+        else:
+            print("Found " + str(found[0]))
+
+        print ("  Success: Number searched from Database")
+
+        # mycursor.close()
+        # key.close()
 
     def printAll (self):
         #to print all
@@ -70,17 +92,12 @@ class Database(object):
         mycursor.execute("USE TEST_DB")  # select the database
         mycursor.execute("SELECT a from test_table")  # execute 'SHOW TABLES' (but data is not returned)
 
-        #tables = mycursor.fetchall()  # return data from last query
-
         for (test_table) in mycursor:
-            print(test_table)
+            print(str(test_table[0]), ", ", end="")
 
-        print ("  Success: Printed")
+        print ("\n  Success: Printed")
 
         key.commit()
         mycursor.close()
-        key.close
+        key.close()
         return
-
-
-
