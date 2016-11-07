@@ -22,6 +22,6 @@ mytestDB.input(x) # inputing a value
 mytestDB.input(y) # inputing a value
 mytestDB.remove(y) # removing all values = x
 mytestDB.printAll() # printing all values
-mytestDB.search(z)
+mytestDB.search(z) # search for z
 print("TEST_END - Success: Connection/Input/Print test passed")
 print("---------------------------------------------")
