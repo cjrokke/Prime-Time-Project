@@ -3,6 +3,7 @@
 # NOTE: this is our graphical user interface
 import index
 from Tkinter import *  # Importing the Tkinter (tool box) library
+                        #might need be "tkinter"
 
 root = Tk()  # Creats object root that has properties for the window. Access via .instr
 
