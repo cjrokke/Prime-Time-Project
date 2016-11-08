@@ -1,7 +1,8 @@
 # Project Name: Prime-Time-Project
 # File: GUI.py
 # NOTE: this is our graphical user interface
-from tkinter import *  # Importing the Tkinter (tool box) library
+import index
+from Tkinter import *  # Importing the Tkinter (tool box) library
 
 root = Tk()  # Creats object root that has properties for the window. Access via .instr
 
@@ -24,6 +25,4 @@ Nbutton = Button(root, text="Not-Prime", command=npfunction(), fg='black', bg='r
 
 root.mainloop()  # Execute the main event handler
 
-import index
-from _tkinter import *
 
