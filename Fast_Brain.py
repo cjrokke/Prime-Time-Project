@@ -13,5 +13,7 @@ class FastBrain(object):
         self.number = d
         FBdatabase = Database(self.user, self.password, self.host, self.database)
         FBdatabase.connect()
-        found = FBdatabase.search(self.number)
-        return found
+        if FBdatabase.search(self.number) == True:
+            FBdatabase.input(self.number)
+            return False
+        return True
