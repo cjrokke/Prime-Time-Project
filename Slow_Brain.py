@@ -6,7 +6,7 @@ class SlowBrain(object):
     def __init__(self):
         self.number = None
 
-    def primeDetermination(self, d):
+    def SBPrimeDetermination(self, d):
         self.number = d
         if self.number % 2 == 0: # Is the number even?
             #print ("not prime (its even)")
@@ -31,5 +31,5 @@ class SlowBrain(object):
 
 #testing
 #a = SlowBrain()
-#print(a.primeDetermination(13))
-#a.primeDetermination(13)
+#print(a.SBprimeDetermination(13))
+#a.SBprimeDetermination(13)

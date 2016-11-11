@@ -74,8 +74,10 @@ class Database(object):
 
         if found == None:
             print ("      Not found")
+            return False
         else:
             print("      Found " + str(found[0]))
+            return True
 
         print ("      Success: Number searched from Database")
 

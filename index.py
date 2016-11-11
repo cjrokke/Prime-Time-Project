@@ -1,5 +1,12 @@
 from Database import Database
-import Utility
-import Fast_Brain
-import Slow_Brain
+from Fast_Brain import FastBrain
+from Slow_Brain import SlowBrain
 
+
+user = 'root'
+password = '1991'
+host = 'localhost'
+database = 'TEST_DB'
+
+FB = FastBrain(user, password, host, database)
+print(FB.FBPrimeDetermination(6))
