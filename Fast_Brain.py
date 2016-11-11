@@ -9,11 +9,14 @@ class FastBrain(object):
         self.host = host
         self.database = database
 
-    def FBPrimeDetermination(self,d):
+    def FBsearch(self,d):
         self.number = d
         FBdatabase = Database(self.user, self.password, self.host, self.database)
         FBdatabase.connect()
-        if FBdatabase.search(self.number) == True:
-            FBdatabase.input(self.number)
-            return False
+        return FBdatabase.search(self.number)
+
+    def addit(self):
+        FBdatabase = Database(self.user, self.password, self.host, self.database)
+        FBdatabase.connect()
+        FBdatabase.input(self.number)
         return True

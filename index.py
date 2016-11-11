@@ -13,10 +13,11 @@ def brain(input):
     SB = SlowBrain()
     FB = FastBrain(user, password, host, database)
 
-    if FB.FBPrimeDetermination(input) == True:
-        print("its in the FB ======> " + str(FB.FBPrimeDetermination(input)))
+    if FB.FBsearch(input) == True:
+        print("its in the FB ======> " + str(FB.FBsearch(input)))
     else:
         print("using the SB ======> " + str(SB.SBPrimeDetermination(input)))
+        FB.addit()
 
 
 
