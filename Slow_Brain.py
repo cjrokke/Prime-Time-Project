@@ -25,11 +25,6 @@ class SlowBrain(object):
                     return True # Prime
 
 
-
-
-
-
 #testing
-#a = SlowBrain()
-#print(a.SBprimeDetermination(13))
-#a.SBprimeDetermination(13)
+# a = SlowBrain()
+# print("here" + str(a.SBPrimeDetermination(88)))
