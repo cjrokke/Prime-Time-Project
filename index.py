@@ -21,5 +21,5 @@ def brain(input):
 
 
 
-input = 5
+input = 51
 brain(input)
