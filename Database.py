@@ -28,12 +28,12 @@ class Database(object):
                 print(e)
         return key
 
-    def input (self, num):
+    def input(self, num):
         key = self.connect()
 
         mycursor = key.cursor()
 
-        print ("      Processing: Inserting number into Database...")
+        print("      Processing: Inserting number into Database...")
         addNum = ("INSERT INTO test_table (a) VALUES (%(x)s)") #sql command to insert x
         X = {'x' : num} # used a dic. incase we want to input multi. values
         mycursor.execute(addNum, X)
@@ -78,10 +78,9 @@ class Database(object):
         else:
             print("      Found " + str(found[0]))
             return True
-
         print ("      Success: Number searched from Database")
 
-        # mycursor.close()
+        #mycursor.close()
         # key.close()
 
     def printAll (self):
