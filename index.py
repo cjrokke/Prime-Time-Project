@@ -1,4 +1,4 @@
-from Database import Database
+
 from Fast_Brain import FastBrain
 from Slow_Brain import SlowBrain
 
@@ -23,6 +23,5 @@ def brain(input):
         FB.printFB()
 
 
-
-input = 17
+input = 22
 brain(input)
