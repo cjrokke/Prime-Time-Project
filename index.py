@@ -23,6 +23,5 @@ def brain(input):
         FB.printFB()
 
 
-
-input = 17
+input = 2
 brain(input)
