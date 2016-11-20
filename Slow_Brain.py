@@ -13,7 +13,7 @@ class SlowBrain(object):
             return False
         else:
             x = math.sqrt(self.number) # Find the ranges max for checking prime
-            x = int(x) # rounds number down
+            x = int(x)+1 # rounds number up
             z = 0.0 # Needs to be decimal so python doesn't round to zero
             for i in range(3, x):
                 z = self.number % i
