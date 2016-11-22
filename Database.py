@@ -155,3 +155,18 @@ class Database(object):
         mycursor.close()
         key.close()
         return
+
+    def flush(self):
+        key = self.connect()
+        mycursor = key.cursor()
+
+        print ("      Processing: Deleting all numbers from Database...")
+
+        delNum = ("Truncate table test_table") #
+        mycursor.execute(delNum)
+
+        print ("      Success: Numbers deleted from Database")
+
+        key.commit()
+        mycursor.close()
+        key.close()
