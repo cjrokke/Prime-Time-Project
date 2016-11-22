@@ -16,17 +16,22 @@ class FastBrain(object):
         print("FAST_BRAIN SEARCH")
         FBdatabase = Database(self.user, self.password, self.host, self.database)
         start = time.time()
-        result = FBdatabase.search(self.number)
+        search = FBdatabase.search(self.number)
         end = time.time()
-        if result == True:
+        if search == True:
             self.FBtime = end - start
-            print(self.FBtime)
-        return result
+            print("its in the Fast Brain ======> prime? " + str(search))
+            print("The FB search took ", str(self.FBtime), " seconds.")
+            FBdatabase.appendFBtime(self.number, self.FBtime)
+            return True
+        else:
+            print("The FB search took ", str(self.FBtime), " seconds.")
+            return False
 
     def addit(self):
         print("FAST_BRAIN ADD")
         FBdatabase = Database(self.user, self.password, self.host, self.database)
-        FBdatabase.input(self.number)
+        FBdatabase.StorePrimeFBtime(self.number, self.FBtime)
         print("adding....")
         #FBdatabase.printAll()
         return True

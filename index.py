@@ -15,12 +15,13 @@ def brain(input):
     FBsearch = FB.FBsearch(input) # run a fast brain search
 
     if FBsearch == True:
-        print("its in the Fast Brain ======> prime? " + str(FBsearch))
         FB.printFB() # print all fast brain values
     else:
-        print("using the Slow Brain ======> prime? " + str(SB.SBPrimeDetermination(input)))
-        if SB.SBPrimeDetermination(input) == True:
-            FB.addit() # if it the slow brain says it's prime add it to the fast brain
+        # if SB.SBPrimeDetermination(input) == True:
+        #     FB.addit()
+        # FB.printFB() # print all values
+
+        SB.SBPrimeDetermination(input)
         FB.printFB() # print all values
 
 input = 199
