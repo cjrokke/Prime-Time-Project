@@ -12,16 +12,16 @@ database = 'TEST_DB'
 def brain(input):
     SB = SlowBrain()
     FB = FastBrain(user, password, host, database)
+    FBsearch = FB.FBsearch(input) # run a fast brain search
 
-    if FB.FBsearch(input) == True:
-        print("its in the FB ======> prime? " + str(FB.FBsearch(input)))
-        FB.printFB()
+    if FBsearch == True:
+        print("its in the Fast Brain ======> prime? " + str(FBsearch))
+        FB.printFB() # print all fast brain values
     else:
-        print("using the SB ======> prime? " + str(SB.SBPrimeDetermination(input)))
+        print("using the Slow Brain ======> prime? " + str(SB.SBPrimeDetermination(input)))
         if SB.SBPrimeDetermination(input) == True:
-            FB.addit()
-        FB.printFB()
+            FB.addit() # if it the slow brain says it's prime add it to the fast brain
+        FB.printFB() # print all values
 
-
-input = 23
+input = 199
 brain(input)

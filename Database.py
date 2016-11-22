@@ -60,7 +60,7 @@ class Database(object):
         mycursor.close()
         key.close()
 
-    def search (self, num):
+    def search(self, num):
         key = self.connect()
         mycursor = key.cursor()
 
@@ -74,8 +74,10 @@ class Database(object):
 
         if found == None:
             print ("Not found")
+            return False
         else:
             print("Found " + str(found[0]))
+            return True
 
         print ("  Success: Number searched from Database")
 
@@ -113,28 +115,6 @@ class Database(object):
 
         print("Found " + str(found[0]))
         return int(found[0])
-
-    def find (self, num): #return prime for use in slow brain algorithm
-        key = self.connect()
-        mycursor = key.cursor()
-
-        print ("  Processing: searching for prime that order number is (", num , ") in Database...")
-
-        seaNum = ("SELECT a FROM test_table WHERE num = (%(x)s);") #sql command to insert x
-        X = {'x' : num}
-        mycursor.execute(seaNum, X)
-
-        found = mycursor.fetchone()
-
-        if found == None:
-            print ("Not found")
-        else:
-            print("Found " + str(found[0]))
-
-        print ("  Success: Number searched from Database")
-        return found
-        # mycursor.close()
-        # key.close()        
         
     def printAll (self):
         #to print all

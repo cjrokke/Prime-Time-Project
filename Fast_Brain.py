@@ -20,7 +20,7 @@ class FastBrain(object):
         end = time.time()
         if result == True:
             self.FBtime = end - start
-        print(" it took" , self.FBtime , )
+            print(self.FBtime)
         return result
 
     def addit(self):
@@ -34,5 +34,4 @@ class FastBrain(object):
     def printFB(self):
         print("FAST_BRAIN DATABASE PRINT")
         FBdatabase = Database(self.user, self.password, self.host, self.database)
-        FBdatabase.connect()
         FBdatabase.printAll()
