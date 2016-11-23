@@ -1,4 +1,4 @@
-from Database import Database
+
 from Fast_Brain import FastBrain
 from Slow_Brain import SlowBrain
 
@@ -14,12 +14,14 @@ def brain(input):
     FB = FastBrain(user, password, host, database)
 
     if FB.FBsearch(input) == True:
-        print("its in the FB ======> " + str(FB.FBsearch(input)))
+        print("its in the FB ======> prime? " + str(FB.FBsearch(input)))
+        FB.printFB()
     else:
-        print("using the SB ======> " + str(SB.SBPrimeDetermination(input)))
-        FB.addit()
+        print("using the SB ======> prime? " + str(SB.SBPrimeDetermination(input)))
+        if SB.SBPrimeDetermination(input) == True:
+            FB.addit()
+        FB.printFB()
 
 
-
-input = 5
+input = 22
 brain(input)

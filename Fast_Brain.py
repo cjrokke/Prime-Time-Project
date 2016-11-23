@@ -11,12 +11,21 @@ class FastBrain(object):
 
     def FBsearch(self,d):
         self.number = d
+        print("FAST_BRAIN SEARCH")
         FBdatabase = Database(self.user, self.password, self.host, self.database)
         FBdatabase.connect()
         return FBdatabase.search(self.number)
 
     def addit(self):
+        print("FAST_BRAIN ADD")
         FBdatabase = Database(self.user, self.password, self.host, self.database)
         FBdatabase.connect()
         FBdatabase.input(self.number)
+        print("adding....")
+        #FBdatabase.printAll()
         return True
+    def printFB(self):
+        print("FAST_BRAIN DATABASE PRINT")
+        FBdatabase = Database(self.user, self.password, self.host, self.database)
+        FBdatabase.connect()
+        FBdatabase.printAll()
