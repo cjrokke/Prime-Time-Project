@@ -3,27 +3,43 @@
 # NOTE: this is our graphical user interface
 import index
 from Tkinter import *  # Importing the Tkinter (tool box) library
-                        #might need be "tkinter"
+# might need be "tkinter"
+from Slow_Brain import *
+from Fast_Brain import *
+ add import brain
+
+
+ def primeCheck(event):
+
+     entry1.get()
+#     # if prime bool true
+#     # flash button using fg bg
+#     # else flash button using fg bg
+#     # refresh FB time sb time
+#     pass
+#
+#
+# def sbTime():
+#     return "yeo"  # placeholder string
+#
+#
+# def fbTime():
+#     return "test"  # placeholder string
 
 root = Tk()  # Creats object root that has properties for the window. Access via .instr
-
 # configuration portion
-root.font = ('Verdana', '20', 'bold')   #changes the font for ALL text belonging to root
+root.font = ('Verdana', '20', 'bold')  # changes the font for ALL text belonging to root
 
-def pfunction():
-    pass  # some code here hitting yes, pass just means no code is running here
-    return
+dummyEvent = FALSE
 
+SBtime = Label(root, text="test1").grid(row=1, sticky = W)
+FBtime = Label(root, text="test2").grid(row=1,sticky = E)
 
-def npfunction():
-    pass  # just pass this function for now
-    return
+entry1 = Entry(root, text="test3").grid(row=2)
+PLabel = Label(root, text="Enter Value to Check", font="Times 10").grid(row=3)
+Ybutton = Button(root, text="Prime", fg='blue', bg='green').grid(row=0,  sticky=W)  # currently packed just to populate the message box
+Nbutton = Button(root, text="Not-Prime", fg='black', bg='red').grid(row=0, sticky=E)# need to link to functions
 
-
-Ybutton = Button(root, text="Prime", command=pfunction(), fg='blue', bg='green',).pack()            #currently packed just to populate the message box
-Nbutton = Button(root, text="Not-Prime", command=npfunction(), fg='black', bg='red').pack()         #need to link to functions
-                                                                                                    #above for functionallity
+entry1.bind("<return>",primeCheck)
 
 root.mainloop()  # Execute the main event handler
-
-
