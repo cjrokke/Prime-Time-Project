@@ -28,14 +28,6 @@ class FastBrain(object):
             print("The FB search took ", str(self.FBtime), " seconds.")
             return False
 
-    def addit(self):
-        print("FAST_BRAIN ADD")
-        FBdatabase = Database(self.user, self.password, self.host, self.database)
-        FBdatabase.StorePrimeFBtime(self.number, self.FBtime)
-        print("adding....")
-        #FBdatabase.printAll()
-        return True
-
     def printFB(self):
         print("FAST_BRAIN DATABASE PRINT")
         FBdatabase = Database(self.user, self.password, self.host, self.database)
