@@ -27,7 +27,7 @@ class SlowBrain(object):
             x = math.sqrt(self.number) # Find the ranges max for checking prime
             x = int(x)+1 # rounds number up
             z = 0.0 # Needs to be decimal so python doesn't round to zero
-            for i in range(3, x):
+            for i in range(3, x, 2):
                 z = self.number % i
                 if z == 0: # If a number divides evenly
                     end = time.time()
