@@ -20,7 +20,7 @@ def primeFalse(event):
 
 
 
-Ybutton = Button(root, text="Prime", fg='blue', bg='green',).pack()            #currently packed just to populate the message box
+Ybutton = Button(root, text="Prime", fg='blue', bg='green').pack()            #currently packed just to populate the message box
 Nbutton = Button(root, text="Not-Prime",  fg='black', bg='red').pack()         #need to link to functions
 
 
