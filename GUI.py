@@ -6,25 +6,18 @@ from Tkinter import *  # Importing the Tkinter (tool box) library
 # might need be "tkinter"
 from Slow_Brain import *
 from Fast_Brain import *
- add import brain
+def primeCheck(event):
+    value = entry1.get()
+    #send value to function index given
+    #val = call indexgui
+    return
+
+def sbTime():
+    return "yeo"  # placeholder string
 
 
- def primeCheck(event):
-
-     entry1.get()
-#     # if prime bool true
-#     # flash button using fg bg
-#     # else flash button using fg bg
-#     # refresh FB time sb time
-#     pass
-#
-#
-# def sbTime():
-#     return "yeo"  # placeholder string
-#
-#
-# def fbTime():
-#     return "test"  # placeholder string
+def fbTime():
+    return "test"  # placeholder string
 
 root = Tk()  # Creats object root that has properties for the window. Access via .instr
 # configuration portion
@@ -40,6 +33,6 @@ PLabel = Label(root, text="Enter Value to Check", font="Times 10").grid(row=3)
 Ybutton = Button(root, text="Prime", fg='blue', bg='green').grid(row=0,  sticky=W)  # currently packed just to populate the message box
 Nbutton = Button(root, text="Not-Prime", fg='black', bg='red').grid(row=0, sticky=E)# need to link to functions
 
-entry1.bind("<return>",primeCheck)
+entry1.bind("<return>", primeCheck)
 
 root.mainloop()  # Execute the main event handler
