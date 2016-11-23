@@ -6,4 +6,4 @@ def brain(input):
             return True
     return False
 
-# print (brain(17))
+#print (brain(17))
