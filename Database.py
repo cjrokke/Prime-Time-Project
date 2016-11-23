@@ -1,7 +1,8 @@
 #DATABASE SCHEMA
 #Database => TEST_DB
 #Table => test_table
-#Column=> a
+#Column=> a, SBtime, FBtime
+
 from __future__ import print_function
 import mysql.connector
 from mysql.connector import errorcode
@@ -28,21 +29,127 @@ class Database(object):
                 print(e)
         return key
 
-    def input (self, num):
+    # def StorePrime (self, num):
+    #     key = self.connect()
+    #
+    #     mycursor = key.cursor()
+    #
+    #     print ("  Processing: Inserting prime number into Database...")
+    #     addNum = ("INSERT INTO test_table (a) VALUES (%(x)s)") #sql command to insert x
+    #     X = {'x' : num} # used a dic. incase we want to input multi. values
+    #     mycursor.execute(addNum, X)
+    #     print ("  Success: Number inserted into Database")
+    #
+    #     key.commit()
+    #     mycursor.close()
+    #     key.close()
+    #     return
+
+    def StorePrimeFBtime(self, prime, FBtime):
         key = self.connect()
 
         mycursor = key.cursor()
 
-        print ("  Processing: Inserting number into Database...")
-        addNum = ("INSERT INTO test_table (a) VALUES (%(x)s)") #sql command to insert x
-        X = {'x' : num} # used a dic. incase we want to input multi. values
+        print ("  Processing: Inserting prime number & FBtime into Database...")
+        addNum = ("INSERT INTO test_table (a, FBtime) VALUES (%(prime)s, %(FBtime)s)") #sql command to insert x
+        X = {'prime' : prime, 'FBtime' : FBtime} # used a dic. incase we want to input multi. values
         mycursor.execute(addNum, X)
-        print ("  Success: Number inserted into Database")
+        print ("  Success: Prime number & FBtime inserted into Database")
 
         key.commit()
         mycursor.close()
         key.close()
         return
+
+    def StorePrimeSBtime(self, prime, SBtime):
+        key = self.connect()
+
+        mycursor = key.cursor()
+
+        print ("  Processing: Inserting prime number & SBtime into Database...")
+        addNum = ("INSERT INTO test_table (a, SBtime) VALUES (%(prime)s, %(SBtime)s)") #sql command to insert x
+        X = {'prime' : prime, 'SBtime' : SBtime} # used a dic. incase we want to input multi. values
+        mycursor.execute(addNum, X)
+        print ("  Success: Prime number & SBtime inserted into Database")
+
+        key.commit()
+        mycursor.close()
+        key.close()
+        return
+
+    #VALUES(value1, value2, value3, ...);
+
+    # def StoreFBTime (self, fbtime):
+    #     key = self.connect()
+    #
+    #     mycursor = key.cursor()
+    #
+    #     print ("  Processing: Inserting FBtime into Database...")
+    #     addtime = ("INSERT INTO test_table (FBtime) VALUES (%(x)s)") #sql command to insert x
+    #     X = {'x' : fbtime} # used a dic. incase we want to input multi. values
+    #     mycursor.execute(addtime, X)
+    #     print ("  Success: FBtime inserted into Database")
+    #
+    #     key.commit()
+    #     mycursor.close()
+    #     key.close()
+    #     return
+
+    # def StoreSBTime (self, num):
+    #     key = self.connect()
+    #
+    #     mycursor = key.cursor()
+    #
+    #     print ("  Processing: Inserting SBtime into Database...")
+    #     addtime = ("INSERT INTO test_table (SBtime) VALUES (%(x)s)") #sql command to insert x
+    #     X = {'x' : num} # used a dic. incase we want to input multi. values
+    #     mycursor.execute(addtime, X)
+    #     print ("  Success: SBtime inserted into Database")
+    #
+    #     key.commit()
+    #     mycursor.close()
+    #     key.close()
+    #     return
+
+    # def appendFBtime(self, prime, FBtime):
+    #     key = self.connect()
+    #     mycursor = key.cursor()
+    #     #self.Database(self.user, self.password , self.host, self.database)
+    #     #search = self.search(prime)
+    #
+    #     print ("  ~~~Processing: appending FBtime for ( " , prime , ") ...")
+    #
+    #     #if search == True:
+    #
+    #     append = """    UPDATE test_table
+    #                         SET FBtime = %s
+    #                         WHERE a = %s """
+    #
+    #     X = (FBtime,prime)
+    #     mycursor.execute(append, X)
+    #     print ("  ~~~Success: Appended FBtime for ( " , prime , ") ...")
+    #     return True
+    #     #else:
+    #         # print ("ERROR: The prime number isn't stored in the database... can't append")
+    #         # return False
+    #
+    #     mycursor.close()
+    #     key.close()
+
+    def appendFBtime(self, prime, FBtime):
+        key = self.connect()
+        mycursor = key.cursor()
+
+        print ("  ~~~Processing: appending FBtime of ( " , prime , ") ...")
+
+        append = ("UPDATE test_table SET FBtime = %s WHERE a = %s")
+        X = (FBtime, prime)
+        mycursor.execute(append, X)
+
+
+        key.commit()
+        mycursor.close()
+        key.close()
 
     def remove (self, num):
         key = self.connect()
@@ -60,7 +167,7 @@ class Database(object):
         mycursor.close()
         key.close()
 
-    def search (self, num):
+    def search(self, num):
         key = self.connect()
         mycursor = key.cursor()
 
@@ -74,8 +181,10 @@ class Database(object):
 
         if found == None:
             print ("Not found")
+            return False
         else:
             print("Found " + str(found[0]))
+            return True
 
         print ("  Success: Number searched from Database")
 
@@ -113,28 +222,6 @@ class Database(object):
 
         print("Found " + str(found[0]))
         return int(found[0])
-
-    def find (self, num): #return prime for use in slow brain algorithm
-        key = self.connect()
-        mycursor = key.cursor()
-
-        print ("  Processing: searching for prime that order number is (", num , ") in Database...")
-
-        seaNum = ("SELECT a FROM test_table WHERE num = (%(x)s);") #sql command to insert x
-        X = {'x' : num}
-        mycursor.execute(seaNum, X)
-
-        found = mycursor.fetchone()
-
-        if found == None:
-            print ("Not found")
-        else:
-            print("Found " + str(found[0]))
-
-        print ("  Success: Number searched from Database")
-        return found
-        # mycursor.close()
-        # key.close()        
         
     def printAll (self):
         #to print all
@@ -155,3 +242,18 @@ class Database(object):
         mycursor.close()
         key.close()
         return
+
+    def flush(self):
+        key = self.connect()
+        mycursor = key.cursor()
+
+        print ("      Processing: Deleting all numbers from Database...")
+
+        delNum = ("Truncate table test_table") #
+        mycursor.execute(delNum)
+
+        print ("      Success: Numbers deleted from Database")
+
+        key.commit()
+        mycursor.close()
+        key.close()
