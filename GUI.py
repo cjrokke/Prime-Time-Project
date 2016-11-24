@@ -3,12 +3,15 @@
 # NOTE: this is our graphical user interface
 #import index
 from Tkinter import *  # Importing the Tkinter (tool box) library
+import tkMessageBox
 from index_GUI_test import*
+
+symbol = "~`!@#$%^&*()_-+={}[]:>;',</?*-+ "
 
 def primeCheck(event):
 
-    if re.search('[a-zA-Z]', entry1.get()):
-        print("invalid entry")
+    if re.search('[a-zA-Z]', entry1.get()) or set(' [~!=@#$%^&*()_+{}":;\']+$').intersection(entry1.get()):
+        tkMessageBox.showwarning("INVALID ENTRY", "Please enter only digits")
         return
     if brain(int(entry1.get())):
         #toggle prime
