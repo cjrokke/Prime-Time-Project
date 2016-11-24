@@ -17,9 +17,11 @@ def brain(input):
         SB.SBPrimeDetermination(input)
         FB.printFB() # print all fast brain values
 
-# quick test of our brain function
-for x in range (300,400):
+#quick test of our brain function
+for x in range (1,1000):
     brain(x)
 
-for x in range (300,400):
+for x in range (1,1000):
     brain(x)
+
+#brain(7)

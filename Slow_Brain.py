@@ -33,12 +33,12 @@ class SlowBrain(object):
                     end = time.time()
                     self.SBtime = end - start
                     print("The SB search took ", str(self.SBtime), " seconds.")
-                    print ("Slow Brain: [not prime]")
+                    print ("Slow Brain: ===================> [ not prime ]")
                     return False # Not Prime
                 if i + 1 == x: # Has it checked against all number?
                     end = time.time()
                     self.SBtime = end - start
-                    print ("Slow Brain: [prime]")
+                    print ("Slow Brain: ===================> [ prime ]")
                     print("The SB search took ", str(self.SBtime), " seconds.")
                     db.StorePrimeSBtime(self.number,self.SBtime)
                     return True # Prime
