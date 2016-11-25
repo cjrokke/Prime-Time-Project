@@ -1,3 +1,4 @@
+from __future__ import print_function
 from Database import Database
 import math
 import time
